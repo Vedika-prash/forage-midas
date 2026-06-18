@@ -38,6 +38,10 @@ public class TaskThreeTests {
         logger.info("----------------------------------------------------------");
         logger.info("use your debugger to find out what waldorf's balance is after all transactions are processed");
         logger.info("kill this test once you find the answer");
+
+        for (UserRecord user : userRepository.findAll()) {
+    System.out.println(user.getName() + " : " + user.getBalance());
+}
         UserRecord waldorf = userRepository.findByName("waldorf");
 System.out.println("Waldorf balance = " + waldorf.getBalance());
         while (true) {
