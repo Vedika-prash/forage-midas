@@ -7,12 +7,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class TransactionListener {
 
-    @KafkaListener(
-            topics = "${general.kafka-topic}",
-            groupId = "midas-group"
-    )
+    @KafkaListener(topics = "${general.kafka-topic}")
     public void listen(Transaction transaction) {
 
-        System.out.println("Received transaction: " + transaction);
+        System.out.println(transaction);
     }
 }
