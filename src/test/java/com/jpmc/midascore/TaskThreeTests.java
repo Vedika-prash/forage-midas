@@ -1,5 +1,6 @@
 package com.jpmc.midascore;
-
+import com.jpmc.midascore.entity.UserRecord;
+import com.jpmc.midascore.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +24,9 @@ public class TaskThreeTests {
     @Autowired
     private FileLoader fileLoader;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @Test
     void task_three_verifier() throws InterruptedException {
         userPopulator.populate();
@@ -39,11 +43,9 @@ public class TaskThreeTests {
         logger.info("use your debugger to find out what waldorf's balance is after all transactions are processed");
         logger.info("kill this test once you find the answer");
 
-        for (UserRecord user : userRepository.findAll()) {
+       for (UserRecord user : userRepository.findAll()) {
     System.out.println(user.getName() + " : " + user.getBalance());
 }
-        UserRecord waldorf = userRepository.findByName("waldorf");
-System.out.println("Waldorf balance = " + waldorf.getBalance());
         while (true) {
             Thread.sleep(20000);
             logger.info("...");
